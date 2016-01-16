@@ -8,10 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import fr.geobulance.tabletapp.Globals;
-
-import com.google.android.gms.plus.model.people.Person;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 import fr.geobulance.tabletapp.ObjectType.Ambulances;
 import fr.geobulance.tabletapp.ObjectType.Etablissement;
@@ -24,6 +22,9 @@ import fr.geobulance.tabletapp.ObjectType.Personnel;
 public class ServerRequestActivity{
 
     private String charset = "UTF-8";
+
+
+
     private List<Ambulances> ambulances;
     private List<Personnel> personnel;
     private List<Etablissement> etablissement;
@@ -120,6 +121,10 @@ public class ServerRequestActivity{
             }
         }
         return toReturn;
+    }
+
+    public List<Ambulances> getAmbulances() {
+        return ambulances;
     }
 
 
