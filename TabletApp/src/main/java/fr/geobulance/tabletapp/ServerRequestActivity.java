@@ -28,11 +28,16 @@ public class ServerRequestActivity{
     private List<Ambulances> ambulances;
     private List<Personnel> personnel;
     private List<Etablissement> etablissement;
-    private List<String> types;
+    private List<String> types = new ArrayList<String>() {{
+        add("ambulances");
+        add("personnel");
+        add("etablissement");
+    }};
     private int idType;
 
 
-    public void ServerRequestActivity(String type) throws IOException {
+
+    public ServerRequestActivity(String type) throws IOException {
         InputStream response = new URL(Globals.URL + type).openStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
         StringBuilder sb = new StringBuilder(0);
@@ -44,9 +49,6 @@ public class ServerRequestActivity{
         String json = sb.toString();
         List<String> preParsed = GsonPreParser(json);
 
-        types.add("ambulances");
-        types.add("personnel");
-        types.add("etablissement");
 
         for(int i = 0; i < types.size(); i++){
             if(type == types.get(i)){
