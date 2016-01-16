@@ -9,6 +9,7 @@ public class Ambulances {
     private double lng;
     private String immatriculation;
     private String created;
+    private String name;
 
     public Ambulances(String _id, double lat, double lng, String immatriculation, String created){
         this._id = _id;
@@ -16,6 +17,7 @@ public class Ambulances {
         this.lng = lng;
         this.immatriculation = immatriculation;
         this.created = created;
+        this.name = name;
     }
 
     public double getLng() {
@@ -41,6 +43,8 @@ public class Ambulances {
     public void set_id(String _idid) {
         this._id = _id;
     }
+
+
 
     public String getImmatriculation() {
         return immatriculation;
