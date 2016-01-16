@@ -4,14 +4,14 @@ package fr.geobulance.tabletapp.ObjectType;
  * Created by juhel on 16/01/2016.
  */
 public class Ambulances {
-    private String uuid;
+    private String _id;
     private double lat;
     private double lng;
     private String immatriculation;
     private String created;
 
     public void Ambulances(String uuid, double lat, double lng, String immatriculation, String created){
-        this.uuid = uuid;
+        this._id = _id;
         this.lat = lat;
         this.lng = lng;
         this.immatriculation = immatriculation;
@@ -34,12 +34,12 @@ public class Ambulances {
         this.lat = lat;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String get_id() {
+        return _id;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void set_id(String _idid) {
+        this._id = _id;
     }
 
 
