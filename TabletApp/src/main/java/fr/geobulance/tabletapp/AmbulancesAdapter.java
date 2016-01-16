@@ -35,7 +35,7 @@ public class AmbulancesAdapter extends ArrayAdapter<Ambulances>{
 
         Ambulances ambulances = getItem(position);
         viewHolder.immatriculation.setText(ambulances.getImmatriculation());
-        viewHolder.name.setText("TODO !");
+        viewHolder.name.setText(ambulances.get_id());
         return convertView;
     }
     public static class ViewHolder

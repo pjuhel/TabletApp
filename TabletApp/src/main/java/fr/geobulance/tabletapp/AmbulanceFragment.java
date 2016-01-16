@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AmbulanceFragment extends ListFragment {
 
-
+    private List<Ambulances> ambulancesList = new ArrayList<Ambulances>();
     public AmbulanceFragment() {
         // Required empty public constructor
     }
@@ -29,10 +29,10 @@ public class AmbulanceFragment extends ListFragment {
     public View onCreateView(   LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        MainActivity mainActivity = (MainActivity)getActivity();
+        ambulancesList = mainActivity.ambulancesList;
         View rootView = inflater.inflate(R.layout.fragment_ambulance,container,false);
-        List<Ambulances> dummyList = new ArrayList<Ambulances>();
-        dummyList.add(new Ambulances("NECKER 01",48.861040,2.337815, "BACKINTIME", "25/02/04"));
-        AmbulancesAdapter adapter = new AmbulancesAdapter(getActivity(),dummyList);
+        AmbulancesAdapter adapter = new AmbulancesAdapter(getActivity(),ambulancesList);
         setListAdapter(adapter);
         return rootView;
     }

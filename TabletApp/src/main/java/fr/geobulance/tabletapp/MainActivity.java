@@ -9,9 +9,14 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import fr.geobulance.tabletapp.ObjectType.Ambulances;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    List<Ambulances> ambulancesList = new ArrayList<Ambulances>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(this);
+        ambulancesList.add(new Ambulances("NECKER 01",48.861040,2.337815, "BACKINTIME", "25/02/04"));
     }
 
 
@@ -46,8 +52,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(48.866667, 2.333333))
-                .title("Marker"));
+        for (int i =0;i<ambulancesList.size();i++)
+        {
+            googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(ambulancesList.get(i).getLat(),ambulancesList.get(i).getLng()))
+                .title(ambulancesList.get(i).get_id())
+            );
+        }
     }
 }
