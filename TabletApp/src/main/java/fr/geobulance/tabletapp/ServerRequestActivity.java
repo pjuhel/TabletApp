@@ -1,10 +1,9 @@
 package fr.geobulance.tabletapp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import fr.geobulance.tabletapp.Globals;
@@ -38,20 +37,22 @@ public class ServerRequestActivity{
 
 
     public ServerRequestActivity(String type) throws IOException {
-        InputStream response = new URL(Globals.URL + type).openStream();
+        URL url = new URL(Globals.URL + type);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        InputStream response = new BufferedInputStream(connection.getInputStream());
         BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
         StringBuilder sb = new StringBuilder(0);
         String line;
         while((line = reader.readLine()) != null){
             sb.append(line).append("\n");
         }
-        response.close();
+        connection.disconnect();
         String json = sb.toString();
         List<String> preParsed = GsonPreParser(json);
 
 
         for(int i = 0; i < types.size(); i++){
-            if(type == types.get(i)){
+            if(type.equals(types.get(i))){
                 idType = i;
             }
         }
@@ -117,9 +118,9 @@ public class ServerRequestActivity{
 
     public Ambulances getAmbulances(String _id){
         Ambulances toReturn = null;
-        for(int i = 0; i<ambulances.size(); i++){
-            if(ambulances.get(i).get_id()==_id){
-                toReturn = ambulances.get(i);
+        for (Ambulances ambulance : ambulances) {
+            if (ambulance.get_id().equals(_id)) {
+                toReturn = ambulance;
             }
         }
         return toReturn;

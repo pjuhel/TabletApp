@@ -13,8 +13,8 @@ public class Ambulances {
 
     public Ambulances(String _id, double lat, double lng, String immatriculation, String created){
         this._id = _id;
-        this.lat = lat;
-        this.lng = lng;
+        this.lat = 42;
+        this.lng = 2;
         this.immatriculation = immatriculation;
         this.created = created;
         this.name = name;
