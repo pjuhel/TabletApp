@@ -9,13 +9,15 @@ public class Ambulances {
     private double lng;
     private String immatriculation;
     private String created;
+    private String name;
 
-    public void Ambulances(String uuid, double lat, double lng, String immatriculation, String created){
+    public Ambulances(String uuid, double lat, double lng, String immatriculation, String created, String name){
         this._id = _id;
         this.lat = lat;
         this.lng = lng;
         this.immatriculation = immatriculation;
         this.created = created;
+        this.name = name;
     }
 
     public double getLng() {
