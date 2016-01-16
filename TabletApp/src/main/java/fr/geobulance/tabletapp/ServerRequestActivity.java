@@ -112,5 +112,15 @@ public class ServerRequestActivity{
         return result;
     }
 
+    public Ambulances getAmbulances(String _id){
+        Ambulances toReturn = null;
+        for(int i = 0; i<ambulances.size(); i++){
+            if(ambulances.get(i).get_id()==_id){
+                toReturn = ambulances.get(i);
+            }
+        }
+        return toReturn;
+    }
+
 
 }
