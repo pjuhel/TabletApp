@@ -2,4 +2,12 @@
     <string name="app_name">TabletApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="dep_base">Départ de la Base</string>
+    <string name="arr_interv">Arrivée au Lieu d\'Intervention</string>
+    <string name="arr_pat">Arrivé au Patient</string>
+    <string name="dep_interv">Départ du Lieu d\'Intervention</string>
+    <string name="arr_hop">Arrivée à l\'Hôpital</string>
+    <string name="fin_med">Fin de la Médicalisation</string>
+    <string name="dep_hop">Départ de l\'Hôpital</string>
+    <string name="arr_base">Retour à la Base</string>
 </resources>

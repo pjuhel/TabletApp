@@ -3,8 +3,7 @@
              android:id="@+id/fragment_ambulance"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="fr.geobulance.tabletapp.AmbulanceFragment">
-
+             tools:context="fr.geobulance.tabletapp.EventsFragment">
     <ListView
             android:id="@android:id/list"
             android:layout_width="wrap_content"

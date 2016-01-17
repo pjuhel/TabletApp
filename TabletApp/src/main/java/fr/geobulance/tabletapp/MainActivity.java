@@ -10,29 +10,26 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import fr.geobulance.tabletapp.ObjectType.Ambulances;
+import fr.geobulance.tabletapp.ObjectType.Events;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    List<Ambulances> ambulancesList = new ArrayList<Ambulances>();
+    public static List<Events> eventsList = new ArrayList<Events>();
+    public GoogleMap googleMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_map);
-        mapFragment.getMapAsync(this);
-        try {
-            ServerRequestActivity serverRequestActivity = new ServerRequestActivity("ambulances");
-            ambulancesList = serverRequestActivity.getAmbulances();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            mapFragment.getMapAsync(this);
+            ClientEvent clientEvent = new ClientEvent(this);
+            clientEvent.execute("ambulances");
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,10 +55,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        for (Ambulances anAmbulancesList : ambulancesList) {
+        this.googleMap=googleMap;
+    }
+
+    public void refreshData()
+    {
+        for (Events anEvents : eventsList) {
             googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(anAmbulancesList.getLat(), anAmbulancesList.getLng()))
-                    .title(anAmbulancesList.get_id())
+                    .position(new LatLng(anEvents.getLat(), anEvents.getLng()))
+                    .title(anEvents.getImei())
             );
         }
     }

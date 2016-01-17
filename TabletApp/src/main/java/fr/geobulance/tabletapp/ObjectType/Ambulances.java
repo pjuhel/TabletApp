@@ -9,12 +9,21 @@ public class Ambulances {
     private double lng;
     private String immatriculation;
     private String created;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String name;
 
-    public Ambulances(String _id, double lat, double lng, String immatriculation, String created){
+    public Ambulances(String _id, double lat, double lng, String immatriculation, String created, String name){
         this._id = _id;
-        this.lat = 42;
-        this.lng = 2;
+        this.lat = lat;
+        this.lng = lng;
         this.immatriculation = immatriculation;
         this.created = created;
         this.name = name;
@@ -40,7 +49,7 @@ public class Ambulances {
         return _id;
     }
 
-    public void set_id(String _idid) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 

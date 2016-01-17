@@ -1,0 +1,51 @@
+{
+  "project_info": {
+    "project_id": "tabletapp-174e4",
+    "project_number": "516336135596",
+    "name": "TabletApp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516336135596:android:78bafd7b5530bb7e",
+        "client_id": "android:fr.geobulance.tabletapp",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "fr.geobulance.tabletapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516336135596-34c9jl2hko9ljpciq2sfg868c6mc15hk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.geobulance.tabletapp",
+            "certificate_hash": "4CD84F512C7D223669C1DAC1B35099AB417B269E"
+          }
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

@@ -5,7 +5,7 @@
                 android:layout_height="fill_parent">
 
     <fragment   android:id="@+id/fragment_ambulance"
-                android:name="fr.geobulance.tabletapp.AmbulanceFragment"
+                android:name="fr.geobulance.tabletapp.EventsFragment"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
     />

@@ -3,10 +3,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-    <TextView android:id="@+id/ambulance_name"
+    <TextView android:id="@+id/events_id"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" android:layout_alignParentTop="true"/>
-    <TextView android:id="@+id/ambulance_immatriculation"
+    <TextView android:id="@+id/events_action"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:layout_below="@+id/ambulance_name"/>
+              android:layout_height="wrap_content" android:layout_below="@+id/events_id"/>
 </RelativeLayout>

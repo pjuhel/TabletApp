@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import fr.geobulance.tabletapp.ObjectType.Ambulances;
+import fr.geobulance.tabletapp.ObjectType.Events;
 
 import java.util.List;
 
 /**
  * Created by louis on 16/01/2016.
  */
-public class AmbulancesAdapter extends ArrayAdapter<Ambulances>{
-    public AmbulancesAdapter(Context context, List<Ambulances> objects) {
+public class EventsAdapter extends ArrayAdapter<Events>{
+    public EventsAdapter(Context context, List<Events> objects) {
         super(context,0, objects);
     }
 
@@ -22,25 +22,24 @@ public class AmbulancesAdapter extends ArrayAdapter<Ambulances>{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.ambulance_view,parent,false);
+            convertView= LayoutInflater.from(getContext()).inflate(R.layout.events_view,parent,false);
             viewHolder = new ViewHolder();
-            viewHolder.name = (TextView) convertView.findViewById(R.id.ambulance_name);
-            viewHolder.immatriculation = (TextView) convertView.findViewById(R.id.ambulance_immatriculation);
+            viewHolder.id = (TextView) convertView.findViewById(R.id.events_id);
+            viewHolder.action = (TextView) convertView.findViewById(R.id.events_action);
             convertView.setTag(viewHolder);
         }
         else
         {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-        Ambulances ambulances = getItem(position);
-        viewHolder.immatriculation.setText(ambulances.getImmatriculation());
-        viewHolder.name.setText(ambulances.get_id());
+        Events events = getItem(position);
+        viewHolder.id.setText(events.getImei());
+        viewHolder.action.setText(events.getAction());
         return convertView;
     }
     public static class ViewHolder
     {
-        public TextView name;
-        public TextView immatriculation;
+        public TextView id;
+        public TextView action;
     }
 }
