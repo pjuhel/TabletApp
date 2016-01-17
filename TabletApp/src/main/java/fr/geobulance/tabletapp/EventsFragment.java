@@ -1,15 +1,13 @@
 package fr.geobulance.tabletapp;
 
 
-import android.app.ListFragment;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import fr.geobulance.tabletapp.ObjectType.Events;
-
-import java.util.List;
+import android.widget.Toast;
 
 
 /**
@@ -17,7 +15,7 @@ import java.util.List;
  */
 public class EventsFragment extends ListFragment {
 
-    public EventsAdapter adapter;
+    public EventsAdapter eventsAdapter;
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -26,14 +24,12 @@ public class EventsFragment extends ListFragment {
     public View onCreateView(   LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        eventsAdapter = new EventsAdapter(getActivity(),((MainActivity)getActivity()).eventsList);
+        setListAdapter(eventsAdapter);
         return inflater.inflate(R.layout.fragment_events,container,false);
     }
 
-    public void refreshData(List<Events> data) {
-        adapter = new EventsAdapter(getActivity(),data);
-        setListAdapter(adapter);
-        adapter.notifyDataSetChanged();
+    public void refreshData() {
+        eventsAdapter.notifyDataSetChanged();
     }
-
-
 }

@@ -22,7 +22,7 @@ public class EventsAdapter extends ArrayAdapter<Events>{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.events_view,parent,false);
+            convertView= LayoutInflater.from(getContext()).inflate(R.layout.view_events,parent,false);
             viewHolder = new ViewHolder();
             viewHolder.id = (TextView) convertView.findViewById(R.id.events_id);
             viewHolder.action = (TextView) convertView.findViewById(R.id.events_action);

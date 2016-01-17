@@ -1,15 +1,20 @@
 package fr.geobulance.tabletapp;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import fr.geobulance.tabletapp.ObjectType.Ambulances;
 import fr.geobulance.tabletapp.ObjectType.Events;
 
 import java.util.ArrayList;
@@ -18,17 +23,22 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     public static List<Events> eventsList = new ArrayList<Events>();
+    private static List<String> filterNameList = new ArrayList<String>();
     public GoogleMap googleMap;
+    //False = Filters
+    //True = Events
+    boolean activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activeFragment=true;
         setContentView(R.layout.activity_main);
+        ClientEvent clientEvent = new ClientEvent(this);
+        clientEvent.execute("");
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_map);
             mapFragment.getMapAsync(this);
-            ClientEvent clientEvent = new ClientEvent(this);
-            clientEvent.execute("ambulances");
     }
 
     @Override
@@ -60,11 +70,35 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void refreshData()
     {
-        for (Events anEvents : eventsList) {
+        List<Events> filteredEvents = new ArrayList<Events>();
+        for (Events events: eventsList
+             ) {
+            if(!filterNameList.contains(events.getAction())) {
+                filteredEvents.add(events);
+            }
+        }
+        googleMap.clear();
+        for (Events anEvents : filteredEvents) {
             googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(anEvents.getLat(), anEvents.getLng()))
                     .title(anEvents.getImei())
             );
         }
+        ((MenuFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).refreshData();
+    }
+
+    public void SwitchHandler(View view) {
+        ((MenuFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).SwitchHandler(view);
+    }
+
+    public void FilterHandler(View view) {
+        for (CheckBox checkbox: Globals.filtreStatus
+             ) {
+            if(!checkbox.isChecked()) {
+                filterNameList.add((String) checkbox.getText());
+            }
+
+        }
+        refreshData();
     }
 }

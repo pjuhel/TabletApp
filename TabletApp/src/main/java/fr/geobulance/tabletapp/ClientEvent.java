@@ -3,19 +3,15 @@ package fr.geobulance.tabletapp;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import android.util.JsonReader;
-import android.util.JsonToken;
-import com.google.gson.Gson;
 import fr.geobulance.tabletapp.ObjectType.Events;
 import android.os.AsyncTask;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -95,13 +91,9 @@ public class ClientEvent extends AsyncTask<String,String,List<Events>> {
         }
         return events;
     }
-    protected void onPostExecute(List<Events> ambulances) {
+    protected void onPostExecute(List<Events> eventsList) {
 
-        MainActivity.eventsList = ambulances;
-        EventsFragment eventsFragment = (EventsFragment) ((MainActivity) context).getFragmentManager().findFragmentById(R.id.fragment_ambulance);
-        if (eventsFragment != null) {
-            eventsFragment.refreshData(events);
-        }
+        MainActivity.eventsList = eventsList;
         ((MainActivity) context).refreshData();
     }
 
