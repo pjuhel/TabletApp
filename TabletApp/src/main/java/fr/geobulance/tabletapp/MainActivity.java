@@ -23,7 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     public static List<Events> eventsList = new ArrayList<Events>();
-    private static List<String> filterNameList = new ArrayList<String>();
+
     public GoogleMap googleMap;
     //False = Filters
     //True = Events
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         List<Events> filteredEvents = new ArrayList<Events>();
         for (Events events: eventsList
              ) {
-            if(!filterNameList.contains(events.getAction())) {
+            if(!Globals.filtreNameList.contains(events.getAction())) {
                 filteredEvents.add(events);
             }
         }
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         for (CheckBox checkbox: Globals.filtreStatus
              ) {
             if(!checkbox.isChecked()) {
-                filterNameList.add((String) checkbox.getText());
+                Globals.filtreNameList.add((String) checkbox.getText());
             }
 
         }

@@ -37,6 +37,10 @@ public class FilterAdapter extends ArrayAdapter<Filter> {
 
         viewHolder.name.setText(filter.getName());
         Globals.filtreStatus.add(viewHolder.name);
+        if(Globals.filtreNameList.contains(filter.getName()))
+        {
+            viewHolder.name.setChecked(false);
+        }
         return convertView;
     }
     public static class ViewHolder

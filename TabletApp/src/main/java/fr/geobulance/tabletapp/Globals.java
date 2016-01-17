@@ -11,4 +11,5 @@ import java.util.List;
 public final class Globals {
     public static final String URL = "http://hackathonnecmer.herokuapp.com/api/events";
     public static final List<CheckBox> filtreStatus = new ArrayList<CheckBox>();
+    public static final List<String> filtreNameList = new ArrayList<String>();
 }
