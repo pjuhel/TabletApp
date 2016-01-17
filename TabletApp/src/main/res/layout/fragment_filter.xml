@@ -4,8 +4,41 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="fr.geobulance.tabletapp.FilterFragment">
-    <ListView
-            android:id="@android:id/list"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+        <CheckBox   android:id="@+id/dep_base"
+                    android:onClick="FilterHandler"
+                    android:text="@string/dep_base"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/arr_interv"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/arr_interv"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/dep_interv"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/dep_interv"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/arr_hop"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/arr_hop"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/fin_med"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/fin_med"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/dep_hop"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/dep_hop"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <CheckBox   android:text="@string/arr_base"
+                    android:onClick="FilterHandler"
+                    android:id="@+id/arr_base"
+                    android:checked="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
 </FrameLayout>

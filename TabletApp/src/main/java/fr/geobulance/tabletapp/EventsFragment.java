@@ -24,7 +24,8 @@ public class EventsFragment extends ListFragment {
     public View onCreateView(   LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        eventsAdapter = new EventsAdapter(getActivity(),((MainActivity)getActivity()).eventsList);
+        eventsAdapter = new EventsAdapter(getActivity(),Globals.filteredEvents);
+
         setListAdapter(eventsAdapter);
         return inflater.inflate(R.layout.fragment_events,container,false);
     }

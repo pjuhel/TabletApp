@@ -34,6 +34,7 @@ public class MenuFragment extends Fragment {
             filterFragment = new FilterFragment();
             activeFragment = false;
             getChildFragmentManager().beginTransaction().add(R.id.fragment_container,eventsFragment).commit();
+            getChildFragmentManager().executePendingTransactions();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false);
     }

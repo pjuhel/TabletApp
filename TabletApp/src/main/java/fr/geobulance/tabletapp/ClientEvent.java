@@ -93,7 +93,8 @@ public class ClientEvent extends AsyncTask<String,String,List<Events>> {
     }
     protected void onPostExecute(List<Events> eventsList) {
 
-        MainActivity.eventsList = eventsList;
+        Globals.eventsList.clear();
+        Globals.eventsList.addAll(eventsList);
         ((MainActivity) context).refreshData();
     }
 

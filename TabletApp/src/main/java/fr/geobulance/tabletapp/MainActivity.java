@@ -22,8 +22,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    public static List<Events> eventsList = new ArrayList<Events>();
-
     public GoogleMap googleMap;
     //False = Filters
     //True = Events
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -70,34 +67,38 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void refreshData()
     {
-        List<Events> filteredEvents = new ArrayList<Events>();
-        for (Events events: eventsList
-             ) {
-            if(!Globals.filtreNameList.contains(events.getAction())) {
-                filteredEvents.add(events);
+        if(!Globals.eventsList.isEmpty()) {
+            Globals.filteredEvents.clear();
+            for (Events events : Globals.eventsList
+                    ) {
+                if (!Globals.filtreNameList.contains(events.getAction())) {
+                    Globals.filteredEvents.add(events);
+                }
             }
+            googleMap.clear();
+            for (Events anEvents : Globals.filteredEvents) {
+                googleMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(anEvents.getLat(), anEvents.getLng()))
+                        .title(anEvents.getImei())
+                );
+            }
+            ((MenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).refreshData();
         }
-        googleMap.clear();
-        for (Events anEvents : filteredEvents) {
-            googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(anEvents.getLat(), anEvents.getLng()))
-                    .title(anEvents.getImei())
-            );
-        }
-        ((MenuFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).refreshData();
     }
 
     public void SwitchHandler(View view) {
-        ((MenuFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).SwitchHandler(view);
+        ((MenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).SwitchHandler(view);
+        refreshData();
     }
 
     public void FilterHandler(View view) {
-        for (CheckBox checkbox: Globals.filtreStatus
-             ) {
-            if(!checkbox.isChecked()) {
-                Globals.filtreNameList.add((String) checkbox.getText());
-            }
-
+        CheckBox checkbox = (CheckBox)findViewById(view.getId());
+        if(!checkbox.isChecked())
+        {
+            Globals.filtreNameList.add((String) checkbox.getText());
+        }
+        else {
+            Globals.filtreNameList.remove((String) checkbox.getText());
         }
         refreshData();
     }
