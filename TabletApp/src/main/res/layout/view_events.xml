@@ -5,8 +5,10 @@
                 android:orientation="vertical">
     <TextView android:id="@+id/events_id"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:layout_alignParentTop="true"/>
+              android:layout_height="wrap_content" android:layout_alignParentTop="true"
+              android:layout_alignParentLeft="true" android:layout_alignParentStart="true" android:gravity="center"/>
     <TextView android:id="@+id/events_action"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:layout_below="@+id/events_id"/>
+              android:layout_height="wrap_content" android:layout_below="@+id/events_id"
+              android:layout_alignParentLeft="true" android:layout_alignParentStart="true" android:gravity="center"/>
 </RelativeLayout>

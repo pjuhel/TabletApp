@@ -25,12 +25,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public GoogleMap googleMap;
     //False = Filters
     //True = Events
-    boolean activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activeFragment=true;
         setContentView(R.layout.activity_main);
         ClientEvent clientEvent = new ClientEvent(this);
         clientEvent.execute("");
@@ -98,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             Globals.filtreNameList.add((String) checkbox.getText());
         }
         else {
-            Globals.filtreNameList.remove((String) checkbox.getText());
+            Globals.filtreNameList.remove( checkbox.getText());
         }
         refreshData();
     }

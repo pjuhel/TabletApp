@@ -32,7 +32,7 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
             eventsFragment = new EventsFragment();
             filterFragment = new FilterFragment();
-            activeFragment = false;
+            activeFragment = true;
             getChildFragmentManager().beginTransaction().add(R.id.fragment_container,eventsFragment).commit();
             getChildFragmentManager().executePendingTransactions();
         // Inflate the layout for this fragment

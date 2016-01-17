@@ -6,8 +6,8 @@
     <string name="arr_interv">Arrivee au Lieu d\'Intervention</string>
     <string name="arr_pat">Arrive au Patient</string>
     <string name="dep_interv">Depart du Lieu d\'Intervention</string>
-    <string name="arr_hop">Arrivee à l\'Hopital</string>
+    <string name="arr_hop">Arrivee a l\'Hopital</string>
     <string name="fin_med">Fin de la Médicalisation</string>
     <string name="dep_hop">Depart de l\'Hopital</string>
-    <string name="arr_base">Retour à la Base</string>
+    <string name="arr_base">Retour a la Base</string>
 </resources>
