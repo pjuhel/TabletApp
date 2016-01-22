@@ -29,8 +29,4 @@ public class EventsFragment extends ListFragment {
         setListAdapter(eventsAdapter);
         return inflater.inflate(R.layout.fragment_events,container,false);
     }
-
-    public void refreshData() {
-        eventsAdapter.notifyDataSetChanged();
-    }
 }

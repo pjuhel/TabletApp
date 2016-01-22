@@ -1,5 +1,8 @@
 package fr.geobulance.tabletapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.*;
@@ -23,15 +26,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     public GoogleMap googleMap;
-    //False = Filters
-    //True = Events
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ClientEvent clientEvent = new ClientEvent(this);
-        clientEvent.execute("");
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            ClientEvent clientEvent = new ClientEvent(this);
+            clientEvent.execute("");
+        } else {
+            Toast.makeText(this,"No Internet Connection",Toast.LENGTH_LONG);
+        }
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_map);
             mapFragment.getMapAsync(this);
@@ -80,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         .title(anEvents.getImei())
                 );
             }
-            ((MenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).refreshData();
         }
     }
 
