@@ -20,7 +20,9 @@ import java.util.List;
 public class MenuFragment extends Fragment {
 
     public MenuFragment() {
-        // Required empty public constructor
+        eventsFragment = new EventsFragment();
+        filterFragment = new FilterFragment();
+        activeFragment = false;
     }
 
     private EventsFragment eventsFragment;
@@ -30,29 +32,26 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            eventsFragment = new EventsFragment();
-            filterFragment = new FilterFragment();
-            activeFragment = false;
-            getChildFragmentManager().beginTransaction().add(R.id.fragment_container,eventsFragment).commit();
-            getChildFragmentManager().executePendingTransactions();
+
+            android.support.v4.app.FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.add(R.id.fragment_container,filterFragment);
+            transaction.commit();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 
-    public void refreshData() {
-        eventsFragment.refreshData();
-    }
 
     public void SwitchHandler(View view) {
         android.support.v4.app.FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         if(activeFragment) {
             transaction.replace(R.id.fragment_container,filterFragment);
+
         }
         else
         {
             transaction.replace(R.id.fragment_container,eventsFragment);
-            eventsFragment.refreshData();
         }
+        //transaction.addToBackStack(null);
         transaction.commit();
         activeFragment=!activeFragment;
     }
