@@ -22,7 +22,7 @@ public class MenuFragment extends Fragment {
     public MenuFragment() {
         eventsFragment = new EventsFragment();
         filterFragment = new FilterFragment();
-        activeFragment = false;
+        activeFragment = true;
     }
 
     private EventsFragment eventsFragment;
@@ -34,7 +34,7 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
 
             android.support.v4.app.FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container,filterFragment);
+            transaction.add(R.id.fragment_container,eventsFragment);
             transaction.commit();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false);
@@ -45,10 +45,8 @@ public class MenuFragment extends Fragment {
         android.support.v4.app.FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         if(activeFragment) {
             transaction.replace(R.id.fragment_container,filterFragment);
-
         }
-        else
-        {
+        else {
             transaction.replace(R.id.fragment_container,eventsFragment);
         }
         //transaction.addToBackStack(null);
