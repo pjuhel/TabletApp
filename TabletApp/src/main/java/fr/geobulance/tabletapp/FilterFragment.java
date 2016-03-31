@@ -14,7 +14,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment showing all the available filter
  */
 public class FilterFragment extends Fragment {
     public FilterFragment() {

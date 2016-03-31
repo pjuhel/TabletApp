@@ -3,6 +3,7 @@ package fr.geobulance.tabletapp;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import android.util.JsonReader;
+import android.widget.Toast;
 import fr.geobulance.tabletapp.ObjectType.Events;
 import android.os.AsyncTask;
 
@@ -17,6 +18,7 @@ import java.util.Map;
 
 /**
  * Created by louis on 17/01/2016.
+ * An async task used when the user change the filters
  */
 public class ClientEvent extends AsyncTask<String,String,List<Events>> {
     private List<Events> events;
