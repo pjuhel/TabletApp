@@ -22,7 +22,9 @@ import fr.geobulance.tabletapp.ObjectType.Events;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *  Main activity, inflate all fragments here.
+ */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     public GoogleMap googleMap;
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         this.googleMap=googleMap;
     }
 
+    /**
+     * Refresh the data.
+     */
     public void refreshData()
     {
         if(!Globals.eventsList.isEmpty()) {
@@ -90,11 +95,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Handle click on the switch
+     * @param view the view of the switch.
+     */
     public void SwitchHandler(View view) {
         ((MenuFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_menu)).SwitchHandler(view);
         refreshData();
     }
 
+    /**
+     * Handle "click" on a filter
+     * @param view the clicked filter
+     */
     public void FilterHandler(View view) {
         CheckBox checkbox = (CheckBox)findViewById(view.getId());
         if(!checkbox.isChecked())

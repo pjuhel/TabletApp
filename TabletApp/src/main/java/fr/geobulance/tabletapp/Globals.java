@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by juhel on 16/01/2016.
+ * Globals data used across the application.
  */
 public final class Globals {
     public static final String URL = "http://hackathonnecmer.herokuapp.com/api/events";
